@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="koen"
+ZSH_THEME="dieter"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -35,8 +35,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-keychain id_rsa id_dsa
-. ~/.keychain/`uname -n`-sh
+# Load keys into keychain if keychain file exists
+if [ -e "~/.keychain/`uname -n`-sh" ]
+then
+  keychain id_rsa id_dsa
+  source ~/.keychain/`uname -n`-sh
+fi
 
 
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
