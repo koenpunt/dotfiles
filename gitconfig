@@ -6,5 +6,5 @@
 	status = auto
 	branch = auto
 [core]
-	excludesfile = .gitignore
+	excludesfile = ~/.gitignore_global
 	autocrlf = false

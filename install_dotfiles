@@ -6,7 +6,7 @@ dotfiles=(
   ackrc
   gemrc
   gitconfig
-  gitignore
+  gitignore_global
   irbrc
   selected_editor
   tm_properties
