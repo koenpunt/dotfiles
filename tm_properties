@@ -30,6 +30,11 @@ tabSize               = 2
 softTabs              = true
 tabSize               = 2
 
+[ source.js ]
+softTabs              = true
+tabSize               = 2
+
+
 
 
 [ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
