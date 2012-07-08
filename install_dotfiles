@@ -39,6 +39,6 @@ do
 		echo "Creating $linkname"
 	fi
 	# ln --symbolic --force --no-dereference ${DIR}/${dotfile} $linkname
-	ln -sfh ${DIR}/${dotfile} $linkname
+	ln -sfn ${DIR}/${dotfile} $linkname
 done
 
