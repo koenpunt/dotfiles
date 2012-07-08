@@ -1,0 +1,10 @@
+[user]
+	name = Koen Punt
+	email = koenpunt@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = .gitignore
+	autocrlf = false

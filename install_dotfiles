@@ -1,0 +1,41 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+dotfiles=(
+  ackrc
+  gemrc
+  gitconfig
+  gitignore
+  selected_editor
+  vim
+  vimrc
+  zshrc
+# profile # commented out because using zsh instead of bash
+)
+
+if [ "$DIR" != "$HOME/.dotfiles" ]
+then
+	echo "First checkout in $HOME/.dotfiles/, exiting..."
+	exit 1
+fi
+
+for dotfile in ${dotfiles[@]} 
+do
+	linkname=${HOME}/.${dotfile}
+	if [ -e "$linkname" ]
+	then
+		if [ -h "$linkname" ]
+		then
+			echo "$linkname is a link, updating..."
+		else
+			echo "$linkname exists, backing up..."
+			mv $linkname $linkname.bak
+			echo "Creating $linkname"
+		fi
+	else
+		echo "Creating $linkname"
+	fi
+	ln --symbolic --force --no-dereference ${DIR}/${dotfile} $linkname
+done
+
