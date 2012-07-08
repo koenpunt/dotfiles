@@ -18,7 +18,14 @@ dotfiles=(
 
 if [ "$DIR" != "$HOME/.dotfiles" ]
 then
-	echo "First checkout in $HOME/.dotfiles/, exiting..."
+	echo "Must be run from ~/.dotfiles/\
+
+Exiting..."
+
+#	echo "First run \
+#\`git clone git@github.com:koenpunt/dotfiles.git ~/.dotfiles\`\
+#
+#Exiting..."
 	exit 1
 fi
 
