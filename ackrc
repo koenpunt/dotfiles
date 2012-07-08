@@ -1,2 +1,8 @@
 --type-add=html=.tpl
+--type-set=smarty=.tpl
+--type-add=js=.coffee
+--type-set=coffee=.coffee
 --type-add=css=.less
+--type-set=less=.less
+--type-set=tmstuff=.tmproj,.tm_build_errors
+--notmstuff

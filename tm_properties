@@ -1,0 +1,39 @@
+# Settings
+projectDirectory      = "$CWD"
+windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Volumes\/wwwapps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Volumes\/wwwapps/~/}:${1/\A(?=.)/ – /}}/}"
+showInvisibles        = true
+softWrap              = false
+
+fileBrowserGlob       = "{*,.tm_properties,.htaccess}"
+
+# Exclude images from file chooser
+excludeInFileChooser  = "*.{png,gif,jpg,jpeg}"
+excludeInFolderSearch = "{$excludeInFolderSearch,public/media}"
+includeInFolderSearch = "{.tm_properties,.htaccess,.gitignore}"
+includeInFileChooser  = "{.tm_properties,.htaccess,.gitignore}"
+includeInBrowser      = "{.tm_properties,.htaccess,.gitignore}"
+include               = "{.tm_properties,.htaccess,.gitignore}"
+
+[ *.less ]
+softTabs              = true
+tabSize               = 2
+
+[ source.coffee ]
+softTabs              = true
+tabSize               = 2
+
+[ text.haml ]
+softTabs              = true
+tabSize               = 2
+
+[ source.yaml ]
+softTabs              = true
+tabSize               = 2
+
+
+
+[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
+binary               = true
+
+
+TM_GIT               = "/usr/local/git/bin/git"
