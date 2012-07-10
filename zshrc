@@ -36,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 # Load keys into keychain if keychain file exists
-if [ -e "~/.keychain/`uname -n`-sh" ]
+if type keychain > /dev/null
 then
   keychain id_rsa id_dsa
   source ~/.keychain/`uname -n`-sh
