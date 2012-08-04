@@ -27,10 +27,8 @@ fi
 export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk
 
 # Node.js library paths:
-#export NODE_PATH=/usr/lib/node_modules:$NODE_PATH
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 txtblk='\e[0;30m' # Black - Regular  
 txtred='\e[0;31m' # Red  

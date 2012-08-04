@@ -34,7 +34,7 @@ do
 	linkname=${HOME}/.${dotfile}
 	if [ -e "$linkname" ]
 	then
-		if [ -h "$linkname" ]
+		if [ -L "$linkname" ]
 		then
 			echo "$linkname is a link, updating..."
 		else
