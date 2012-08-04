@@ -1,20 +1,59 @@
-# Settings
-projectDirectory      = "$CWD"
-windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Volumes\/wwwapps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Volumes\/wwwapps/~/}:${1/\A(?=.)/ – /}}/}"
-showInvisibles        = true
-softWrap              = false
+# Basic Settings
+#
+windowTitle      = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Volumes\/wwwapps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Volumes\/wwwapps/~/}:${1/\A(?=.)/ – /}}/}"
+fontName         = "Monaco"
+fontSize         = 12
 
-fileBrowserGlob       = "{*,.tm_properties,.htaccess}"
+# Extra files to include
+#
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
+fileBrowserGlob  = "{*,$myExtraIncludes}"
+include = "{$include,$myExtraIncludes}"
 
-# Exclude images from file chooser
-excludeInFileChooser  = "*.{png,gif,jpg,jpeg}"
-excludeInFolderSearch = "{$excludeInFolderSearch,public/media}"
-includeInFolderSearch = "{.tm_properties,.htaccess,.gitignore}"
-includeInFileChooser  = "{.tm_properties,.htaccess,.gitignore}"
-includeInBrowser      = "{.tm_properties,.htaccess,.gitignore}"
-include               = "{.tm_properties,.htaccess,.gitignore}"
+# Hide log, vendor and tmp directories from search popups.
+#
+myExtraExcludes = "log,vendor,tmp,public/media"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
 
-[ *.less ]
+# If you also want to hide them from your project manager pane, add
+# the following line to your project's local .tm_properties.
+#
+# excludeInBrowser      = "{$excludeInBrowser,log,vendor,tmp}" 
+
+
+# Configure git and hg
+#
+TM_HG  = "/usr/bin/hg"
+TM_GIT = "/usr/bin/git"
+
+# Default editing configuration
+#
+softWrap         = true
+showInvisibles   = true
+
+# File type specific configuration
+#
+[ .git/COMMIT_EDITMSG ]
+spellChecking    = true
+spellingLanguage = 'en'
+
+[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
+binary           = true
+
+[ source ]
+softTabs         = true
+tabSize          = 2
+
+[ source.php ]
+softTabs         = false
+tabSize          = 4
+
+[ source.python ]
+softTabs         = true
+tabSize          = 4
+
+[ source.css.less ]
 softTabs              = true
 tabSize               = 2
 
@@ -34,11 +73,13 @@ tabSize               = 2
 softTabs              = true
 tabSize               = 2
 
+[ source.json ]
+softTabs              = true
+tabSize               = 4
 
 
+[ attr.untitled ]
+fileType         = "source.php"
 
-[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
-binary               = true
-
-
-TM_GIT               = "/usr/local/git/bin/git"
+[ "{README,INSTALL,LICENSE,TODO}" ]
+fileType         = "text.plain"
