@@ -10,6 +10,9 @@ myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
+# Exclude images from file chooser
+excludeInFileChooser  = "*.{png,gif,jpg,jpeg}"
+
 # Hide log, vendor and tmp directories from search popups.
 #
 myExtraExcludes = "log,vendor,tmp,public/media"
