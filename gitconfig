@@ -8,3 +8,13 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = false
+[alias]
+	ci = commit
+    b = branch
+    s = status
+	f = fetch
+	co = checkout
+	ci = commit
+	cp = cherry-pick
+	com = checkout master
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative

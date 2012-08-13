@@ -12,3 +12,8 @@ ehthumbs.db
 Icon?
 Thumbs.db
 ._*
+
+# ZSH Plugin generated files #
+##############################
+.cake_task_cache
+.cap_tasks~
