@@ -1,6 +1,6 @@
 # Settings
 projectDirectory      = "$CWD"
-windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Volumes\/wwwapps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Volumes\/wwwapps/~/}:${1/\A(?=.)/ – /}}/}"
+windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Volumes\/WebApps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Volumes\/WebApps/\/var\/apps/}:${1/\A(?=.)/ – /}}/}"
 showInvisibles        = true
 softWrap              = false
 
