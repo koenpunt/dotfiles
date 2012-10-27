@@ -70,10 +70,13 @@ set noexpandtab
 
 " Display
 syntax on
-color blackboard
+"color wombat256mod
 set cursorline
 set number
 highlight CursorLine NONE ctermbg=0
+
+" Language specific colorschemes
+autocmd FileType html colorscheme candycode
 
 " Search highlight (disable with <F4>)
 set hlsearch
@@ -98,5 +101,8 @@ au BufRead,BufNewFile /etc/nginx/* set ft=nginx
 " PHP FPM configuration
 au BufRead,BufNewFile /etc/php5/fpm/* set syntax=dosini
 
-
-
+" VimDiff fixup
+highlight DiffAdd cterm=NONE ctermfg=black ctermbg=Green gui=NONE guifg=black guibg=Green 
+highlight DiffDelete cterm=NONE ctermfg=black ctermbg=Red gui=NONE guifg=black guibg=Red 
+highlight DiffChange cterm=NONE ctermfg=black ctermbg=Yellow gui=NONE guifg=black guibg=Yellow 
+highlight DiffText cterm=NONE ctermfg=black ctermbg=Magenta gui=NONE guifg=black guibg=Magenta
