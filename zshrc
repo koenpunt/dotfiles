@@ -44,11 +44,17 @@ then
 fi
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin
-export PATH="/usr/local/git/bin:$PATH"
+export PATH=/usr/local/git/bin:$PATH
 
+autoload bashcompinit
+bashcompinit
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# Node Version Manager
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"  # This loads NVM
-
-
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
