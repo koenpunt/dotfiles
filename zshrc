@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 # Load keys into keychain if keychain file exists
 if type keychain > /dev/null
 then
-  keychain id_rsa id_dsa
+  keychain id_rsa
   source ~/.keychain/`uname -n`-sh
 fi
 
@@ -55,6 +55,7 @@ bindkey '^X^E' edit-command-line
 
 # Node Version Manager
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"  # This loads NVM
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
