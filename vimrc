@@ -70,7 +70,6 @@ set noexpandtab
 
 " Display
 syntax on
-"color wombat256mod
 set cursorline
 set number
 highlight CursorLine NONE ctermbg=0
@@ -92,14 +91,6 @@ au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au FileType c set omnifunc=ccomplete#Complete
 
-" Smarty templates
-au BufNewFile,BufRead *.tpl :set ft=html " all my .tpl files ARE html
-
-" Nginx 
-au BufRead,BufNewFile /etc/nginx/* set ft=nginx 
-
-" PHP FPM configuration
-au BufRead,BufNewFile /etc/php5/fpm/* set syntax=dosini
 
 " VimDiff fixup
 highlight DiffAdd cterm=NONE ctermfg=black ctermbg=Green gui=NONE guifg=black guibg=Green 
