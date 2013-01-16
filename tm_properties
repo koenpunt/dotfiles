@@ -6,7 +6,7 @@ softWrap              = false
 
 # Extra files to include
 #
-myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
@@ -15,7 +15,7 @@ excludeInFileChooser  = "*.{png,gif,jpg,jpeg}"
 
 # Hide log, vendor and tmp directories from search popups.
 #
-myExtraExcludes = "log,vendor,tmp,public/media"
+myExtraExcludes = "log,tmp,public/media,node_modules"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
 
