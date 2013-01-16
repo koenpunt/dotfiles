@@ -1,12 +1,12 @@
 # Settings
 projectDirectory      = "$CWD"
-windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Volumes\/wwwapps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Volumes\/wwwapps/\/var\/apps/}:${1/\A(?=.)/ – /}}/}"
+windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/private\/shares\/apps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/private\/shares\/apps/\/var\/apps/}:${1/\A(?=.)/ – /}}/}"
 showInvisibles        = true
 softWrap              = false
 
 # Extra files to include
 #
-myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
@@ -15,7 +15,7 @@ excludeInFileChooser  = "*.{png,gif,jpg,jpeg}"
 
 # Hide log, vendor and tmp directories from search popups.
 #
-myExtraExcludes = "log,vendor,tmp,public/media"
+myExtraExcludes = "log,tmp,public/media,node_modules"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
 
