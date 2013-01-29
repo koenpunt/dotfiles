@@ -30,7 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gem git cake svn cap npm debian heroku)
+plugins=(gem git cake svn cap npm debian heroku hub)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,6 +46,8 @@ fi
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin
 export PATH=/usr/local/git/bin:$PATH
 
+export PATH=/usr/local/composer/bin:$PATH
+
 autoload bashcompinit
 bashcompinit
 
@@ -57,5 +59,10 @@ bindkey '^X^E' edit-command-line
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"  # This loads NVM
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
+# RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Hub
+export GITHUB_USER="koenpunt"
+eval "$(hub alias -s)"
