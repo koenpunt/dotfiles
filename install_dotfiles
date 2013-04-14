@@ -13,7 +13,7 @@ dotfiles=(
   vim
   vimrc
   zshrc
-# profile # commented out because using zsh instead of bash
+  railsrc
 )
 
 if [ "$DIR" != "$HOME/.dotfiles" ]
