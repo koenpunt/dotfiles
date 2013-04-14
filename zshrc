@@ -66,3 +66,6 @@ eval "$(rbenv init -)"
 # Hub
 export GITHUB_USER="koenpunt"
 eval "$(hub alias -s)"
+
+# List files on cd
+cd () { builtin cd "$@" && ls -F }
