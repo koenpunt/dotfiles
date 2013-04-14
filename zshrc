@@ -63,6 +63,7 @@ bindkey '^X^E' edit-command-line
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+export RPROMPT='[%?]'
 # Hub
 export GITHUB_USER="koenpunt"
 eval "$(hub alias -s)"
