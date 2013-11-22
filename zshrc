@@ -51,9 +51,8 @@ export PATH=/usr/local/composer/bin:$PATH
 autoload bashcompinit
 bashcompinit
 
-autoload edit-command-line
-zle -N edit-command-line
-bindkey '^X^E' edit-command-line
+# DNS Flush
+alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 
 # Node Version Manager
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"  # This loads NVM
@@ -63,10 +62,23 @@ bindkey '^X^E' edit-command-line
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# Display exit code
 export RPROMPT='[%?]'
+
 # Hub
 export GITHUB_USER="koenpunt"
 eval "$(hub alias -s)"
 
-# List files on cd
-cd () { builtin cd "$@" && ls -F }
+# AWS credentials
+export EC2_HOME=$HOME/.aws
+export EC2_PRIVATE_KEY=$(echo $HOME/.aws/pk-*.pem)
+export EC2_CERT=$(echo $HOME/.aws/cert-*.pem)
+export AWS_CREDENTIAL_FILE=$HOME/.aws/aws-credential-file.txt
+export PATH="$EC2_HOME/bin:$PATH"
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# PHP OSX
+export PATH=/usr/local/php5/bin:$PATH
