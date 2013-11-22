@@ -19,5 +19,13 @@
 	com = checkout master
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --format='%Cgreen%h%Creset %C(cyan)%an%Creset - %s' --graph
+	undo-commit = reset --soft HEAD^
+	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
 [push]
-	default = simple
+	default = current
+[rerere]
+	enabled = true
+[pull]
+	rebase = true
+[help]
+	autocorrect = 15
