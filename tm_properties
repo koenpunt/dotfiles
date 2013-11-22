@@ -1,12 +1,12 @@
 # Settings
 projectDirectory      = "$CWD"
-windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/private\/shares\/apps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/private\/shares\/apps/\/var\/apps/}:${1/\A(?=.)/ – /}}/}"
+windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/private\/shares\/apps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/private\/shares\/apps/\/var\/apps/}:${1/\A(?=.)/ – /}}/} (git: $TM_SCM_BRANCH)"
 showInvisibles        = true
 softWrap              = false
 
 # Extra files to include
 #
-myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations"
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.travis.yml,.bowerrc,.nvmrc"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
@@ -23,12 +23,6 @@ excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}"
 # the following line to your project's local .tm_properties.
 #
 # excludeInBrowser      = "{$excludeInBrowser,log,vendor,tmp}" 
-
-
-# Configure git and hg
-#
-TM_HG  = "/usr/bin/hg"
-TM_GIT = "/usr/bin/git"
 
 # Default editing configuration
 #
@@ -53,7 +47,7 @@ softTabs         = false
 tabSize          = 4
 
 [ source.python ]
-softTabs         = true
+softTabs         = false
 tabSize          = 4
 
 [ source.css.less ]
