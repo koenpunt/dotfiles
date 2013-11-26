@@ -1,28 +1,18 @@
 # Settings
 projectDirectory      = "$CWD"
-windowTitle           = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/private\/shares\/apps\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/private\/shares\/apps/\/var\/apps/}:${1/\A(?=.)/ – /}}/} (git: $TM_SCM_BRANCH)"
-showInvisibles        = true
-softWrap              = false
+windowTitle           = "$TM_DISPLAYNAME - $TM_DIRECTORY (git: $TM_SCM_BRANCH)"
 
 # Extra files to include
 #
-myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.travis.yml,.bowerrc,.nvmrc"
-fileBrowserGlob  = "{*,$myExtraIncludes}"
-include = "{$include,$myExtraIncludes}"
+myIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.travis.yml,.bowerrc,.nvmrc"
+fileBrowserGlob  = "{*,$myIncludes}"
+include = "{$include,$myIncludes}"
 
-# Exclude images from file chooser
-excludeInFileChooser  = "*.{png,gif,jpg,jpeg}"
-
-# Hide log, vendor and tmp directories from search popups.
+# Hide log and tmp directories from search popups.
 #
-myExtraExcludes = "log,tmp,public/media,node_modules"
-excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
-excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
-
-# If you also want to hide them from your project manager pane, add
-# the following line to your project's local .tm_properties.
-#
-# excludeInBrowser      = "{$excludeInBrowser,log,vendor,tmp}" 
+myExcludes = "log,tmp,public/media,node_modules"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}" 
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}" 
 
 # Default editing configuration
 #
@@ -31,10 +21,6 @@ showInvisibles   = true
 
 # File type specific configuration
 #
-[ .git/COMMIT_EDITMSG ]
-spellChecking    = true
-spellingLanguage = 'en'
-
 [ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
 binary           = true
 
@@ -52,6 +38,10 @@ tabSize          = 4
 
 [ source.css.less ]
 softTabs              = true
+tabSize               = 2
+
+[ source.scss ]
+softTabs              = false
 tabSize               = 2
 
 [ source.coffee ]
@@ -73,7 +63,6 @@ tabSize               = 2
 [ source.json ]
 softTabs              = true
 tabSize               = 4
-
 
 [ attr.untitled ]
 fileType         = "source.php"
