@@ -1,5 +1,4 @@
 # Settings
-projectDirectory      = "$CWD"
 windowTitle           = "$TM_DISPLAYNAME - $TM_DIRECTORY (git: $TM_SCM_BRANCH)"
 
 # Extra files to include
@@ -11,17 +10,17 @@ include = "{$include,$myIncludes}"
 # Hide log and tmp directories from search popups.
 #
 myExcludes = "log,tmp,public/media,node_modules"
-excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}" 
-excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}" 
+excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
 
 # Default editing configuration
 #
-softWrap         = true
+softWrap         = false
 showInvisibles   = true
 
 # File type specific configuration
 #
-[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
+[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib,gem,mp4,mov} ]
 binary           = true
 
 [ source ]
@@ -37,7 +36,7 @@ softTabs         = false
 tabSize          = 4
 
 [ source.css.less ]
-softTabs              = true
+softTabs              = false
 tabSize               = 2
 
 [ source.scss ]
@@ -66,6 +65,9 @@ tabSize               = 4
 
 [ attr.untitled ]
 fileType         = "source.php"
+
+[ text.plain ]
+softWrap         = true
 
 [ "{README,INSTALL,LICENSE,TODO}" ]
 fileType         = "text.plain"

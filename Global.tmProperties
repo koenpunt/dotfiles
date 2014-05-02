@@ -1,0 +1,112 @@
+fontName         = SourceCodePro-Regular
+fontSize         = 13
+showInvisibles   = true
+showWrapColumn   = true
+softTabs         = true
+tabSize			 = 2
+softWrap         = false
+spellChecking    = true
+spellingLanguage = en
+theme            = CAB58494-D1A3-4BAD-BBC6-DAED679AD20B
+wrapColumn       = 0
+
+[ *.NFO ]
+fileType         = text.plain
+
+[ *.cap ]
+fileType         = source.ruby
+
+[ *.cfg ]
+fileType         = text.plain
+
+[ *.command ]
+fileType         = text.plain
+
+[ *.conf.erb ]
+fileType         = source.nginx
+
+[ *.crt ]
+fileType         = text.plain
+
+[ *.pem ]
+fileType         = text.plain
+
+[ *.erb ]
+fileType         = text.html.erb.rails
+
+[ *.html.erb ]
+fileType         = text.html.erb.rails
+
+[ *.log ]
+fileType         = text.plain
+
+[ *.mk ]
+fileType         = source.makefile
+
+[ *.nfo ]
+fileType         = text.plain
+
+[ *.csr ]
+fileType         = text.plain
+
+[ *.p7b ]
+fileType         = text.plain
+
+[ *.php ]
+fileType         = text.html.php
+
+[ *.php.sample ]
+fileType         = text.html.php
+
+[ *.tt ]
+fileType         = text.html.erb
+
+[ *.svg ]
+fileType         = text.xml
+
+[ *.tpl ]
+fileType         = text.html.smarty
+
+[ *.tpl.example ]
+fileType         = text.html.smarty
+
+[ *.yml ]
+fileType         = source.yaml
+
+[ .env ]
+fileType         = text.plain
+
+[ Procfile ]
+fileType         = source.yaml
+
+[ Procfile.* ]
+fileType         = source.yaml
+
+[ .gitignore ]
+fileType         = text.plain
+
+[ .nvmrc ]
+fileType         = text.plain
+
+[ .standalone_migrations ]
+fileType         = source.yaml
+
+[ .zshrc ]
+fileType         = text.plain
+
+[ Capfile ]
+fileType         = source.ruby
+
+[ default ]
+fileType         = source.nginx
+
+[ text ]
+spellChecking    = true
+
+[ text.html.smarty ]
+softTabs         = true
+
+[ text.html.php ]
+softTabs         = false
+tabSize          = 4
+

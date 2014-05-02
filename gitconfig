@@ -8,6 +8,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = false
+	editor = /usr/local/bin/vim
 [alias]
 	ci = commit
     b = branch

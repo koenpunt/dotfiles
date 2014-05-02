@@ -1,15 +1,12 @@
 ZSH=$HOME/.oh-my-zsh
-#ZSH_THEME="agnoster"
 ZSH_THEME="bira"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(brew bundler capistrano composer gem git github node npm nvm rake rbenv rsync ruby textmate)
+plugins=(brew bundler composer gem node npm rbenv rsync ruby textmate)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
 
 # Load keys into keychain if keychain file exists
 if type keychain > /dev/null
@@ -18,14 +15,20 @@ then
   source ~/.keychain/`uname -n`-sh
 fi
 
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin
+# DNS Flush
+alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNS'
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# SSH Auto CD
+alias ssh='env SSH_PWD="$PWD" command ssh'
+
+#alias rake='noglob bundled_rake'
+
+setopt complete_aliases
 
 # Enable bash autocomplete
 autoload bashcompinit
 bashcompinit
-
-# DNS Flush
-alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDN
 
 # HUB
 export GITHUB_USER="koenpunt"
@@ -42,9 +45,6 @@ fi
 # PHP 
 export PATH=/usr/local/php5/bin:$PATH
 
-# NVM
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-
 # Heroku Toolbelt
 export PATH=/usr/local/heroku/bin:$PATH
 
@@ -56,3 +56,7 @@ export AWS_CREDENTIAL_FILE=$HOME/.aws/aws-credential-file.txt
 export PATH="$EC2_HOME/bin:$PATH"
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 
+[ -s "/Users/koenpunt/.nvm/nvm.sh" ] && . "/Users/koenpunt/.nvm/nvm.sh" # This loads NVM
+
+# Grunt
+eval "$(grunt --completion=zsh)"
