@@ -8,6 +8,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = false
+	editor = /usr/bin/vim
 [alias]
 	ci = commit
     b = branch
@@ -19,5 +20,13 @@
 	com = checkout master
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --format='%Cgreen%h%Creset %C(cyan)%an%Creset - %s' --graph
+	report = log --author='Koen' --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges
+	undo-commit = reset --soft HEAD^
 [push]
 	default = simple
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[help]
+	autocorrect = 15
