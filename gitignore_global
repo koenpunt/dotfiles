@@ -17,3 +17,6 @@ Thumbs.db
 ##############################
 .cake_task_cache
 .cap_task_cache
+
+# XCode userdata
+*.xcuserdatad

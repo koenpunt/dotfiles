@@ -3,7 +3,7 @@ windowTitle           = "$TM_DISPLAYNAME - $TM_DIRECTORY (git: $TM_SCM_BRANCH)"
 
 # Extra files to include
 #
-myIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.travis.yml,.bowerrc,.nvmrc"
+myIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.foreman,.powenv,.travis.yml,.bowerrc,.nvmrc,.rspec,.buildpacks"
 fileBrowserGlob  = "{*,$myIncludes}"
 include = "{$include,$myIncludes}"
 
@@ -23,10 +23,6 @@ showInvisibles   = true
 [ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib,gem,mp4,mov} ]
 binary           = true
 
-[ source ]
-softTabs         = true
-tabSize          = 2
-
 [ source.php ]
 softTabs         = false
 tabSize          = 4
@@ -35,33 +31,8 @@ tabSize          = 4
 softTabs         = false
 tabSize          = 4
 
-[ source.css.less ]
-softTabs              = false
-tabSize               = 2
-
-[ source.scss ]
-softTabs              = false
-tabSize               = 2
-
-[ source.coffee ]
-softTabs              = true
-tabSize               = 2
-
-[ text.haml ]
-softTabs              = true
-tabSize               = 2
-
-[ source.yaml ]
-softTabs              = true
-tabSize               = 2
-
-[ source.js ]
-softTabs              = true
-tabSize               = 2
-
 [ source.json ]
-softTabs              = true
-tabSize               = 4
+tabSize          = 2
 
 [ attr.untitled ]
 fileType         = "source.php"

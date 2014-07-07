@@ -30,3 +30,5 @@
 	rebase = true
 [help]
 	autocorrect = 15
+[ghi]
+	token = !security find-internet-password -a koenpunt -s github.com -l 'ghi token' -w

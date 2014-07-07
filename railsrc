@@ -1,1 +1,2 @@
 --database=mysql
+--skip-test-unit
