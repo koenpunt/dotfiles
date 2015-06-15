@@ -3,13 +3,13 @@ windowTitle           = "$TM_DISPLAYNAME - $TM_DIRECTORY (git: $TM_SCM_BRANCH)"
 
 # Extra files to include
 #
-myIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.foreman,.powenv,.travis.yml,.bowerrc,.nvmrc,.rspec,.buildpacks"
+myIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.foreman,.powenv,.powrc,.travis.yml,.bowerrc,.nvmrc,.rspec,.buildpacks,.editorconfig,.travis"
 fileBrowserGlob  = "{*,$myIncludes}"
 include = "{$include,$myIncludes}"
 
 # Hide log and tmp directories from search popups.
 #
-myExcludes = "log,tmp,public/media,node_modules"
+myExcludes = "log,tmp,public/media,node_modules,bower_components,vendor,_builds,_projects,_steps"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}"
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
 
@@ -42,3 +42,10 @@ softWrap         = true
 
 [ "{README,INSTALL,LICENSE,TODO}" ]
 fileType         = "text.plain"
+
+# "Go to Related File" action for Rspec test files
+[ *.rb ]
+relatedFilePath = "${TM_FILEPATH/\/app\/(.+)/\/spec\/${1/(?=\.rb$)/_spec/}/}"
+
+[ *_spec.rb ]
+relatedFilePath = "${TM_FILEPATH/\/spec\/(.+)/\/app\/${1/_spec(?=\.rb$)//}/}"

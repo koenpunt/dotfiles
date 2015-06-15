@@ -4,7 +4,13 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(brew bundler composer gem node npm rbenv rsync ruby rails textmate hk)
+plugins=(brew composer gem bundler rbenv rsync ruby textmate hk aws)
+
+# Use non-Apple git
+export PATH="/usr/local/git/bin:$PATH"
+
+# Need to add aws to path before sourcing oh-my-zsh
+export PATH="$PATH:/usr/local/aws/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -25,16 +31,13 @@ alias ssh='env SSH_PWD="$PWD" command ssh'
 # Shortcut to editing local git config
 alias vgit='vim .git/config'
 
+alias apps='cd /private/shares/apps/$1'
+
 alias r='rails'
-alias h='heroku'
 
 alias rapp='rails new --skip-gemfile --skip-test-unit --database=mysql -m https://raw.githubusercontent.com/fetch/rails-templates/master/default.rb'
 
 alias opendev='open http://$(basename $PWD).dev'
-
-# s3cmd aliases for different s3 accounts
-alias s3koen='s3cmd -c ~/.s3cfg'
-alias s3fetch='s3cmd -c ~/.s3cfg-fetch'
 
 setopt complete_aliases
 
@@ -50,33 +53,52 @@ if [ -d "${RBENV_ROOT}" ]; then
   eval "$(rbenv init -)"
 fi
 
-# Git
-#export PATH=/usr/local/git/bin:$PATH
+productionlog(){
+  server=$2
+  if [ -z "$server" ]; then
+	server=vito
+  fi
+  ssh $server.fetchdns.nl tail /var/apps/$1/current/log/production.log -f
+}
 
 # HUB
 export GITHUB_USER="koenpunt"
 eval "$(hub alias -s)"
 
-# PHP
-#export PATH=/usr/local/php5/bin:$PATH
-
-# Override pg_config from php
-#export PATH=/usr/local/bin:$PATH
+# Go
+export GOPATH=$HOME/gocode
+export PATH=$GOPATH/bin:$PATH
 
 # Heroku Toolbelt
+export HEROKU_GIT_HOST_REGEX="heroku\.com(\..*)?"
 export PATH=/usr/local/heroku/bin:$PATH
 
 # AWS credentials
-export EC2_HOME=$HOME/.aws
-export EC2_PRIVATE_KEY=$(echo $HOME/.aws/pk-*.pem)
-export EC2_CERT=$(echo $HOME/.aws/cert-*.pem)
+#export EC2_HOME=$HOME/.aws
+#export EC2_PRIVATE_KEY=$(echo $HOME/.aws/pk-*.pem)
+#export EC2_CERT=$(echo $HOME/.aws/cert-*.pem)
 export AWS_CREDENTIAL_FILE=$HOME/.aws/aws-credential-file.txt
-export PATH="$EC2_HOME/bin:$PATH"
+export AWS_DEFAULT_REGION=eu-central-1
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 
-# NVM
-export NVM_DIR="/Users/koenpunt/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads NVM
+# nodenv
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
 
 # Grunt
 eval "$(grunt --completion=zsh)"
+
+# Node NPM
+eval "`npm completion`"
+
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# Brew PHP
+export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+
+# Composer
+export PATH=$HOME/.composer/vendor/bin:$PATH
+
+# Docker
+[ -f $HOME/.dockerrc ] && source $HOME/.dockerrc

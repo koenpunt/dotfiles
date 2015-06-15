@@ -20,14 +20,15 @@
 	com = checkout master
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --format='%Cgreen%h%Creset %C(cyan)%an%Creset - %s' --graph
-	undo-commit = reset --soft HEAD^
 	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+	branch-cleanup = !git fetch origin --prune && git branch --merged master | grep -v 'master$' | xargs git branch -d
 [push]
 	default = current
 [rerere]
 	enabled = true
 [pull]
 	rebase = true
+	default = current
 [help]
 	autocorrect = 15
 [ghi]
