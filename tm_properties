@@ -1,31 +1,35 @@
 # Settings
-windowTitle           = "$TM_DISPLAYNAME - $TM_DIRECTORY (git: $TM_SCM_BRANCH)"
+#
+windowTitle           = "$TM_DISPLAYNAME - ${TM_DIRECTORY/${HOME}\//~\//} (git: $TM_SCM_BRANCH)"
 
 # Extra files to include
 #
-myIncludes = ".tm_properties,.htaccess,.gitignore,.standalone_migrations,.env,.foreman,.powenv,.powrc,.travis.yml,.bowerrc,.nvmrc,.rspec,.buildpacks,.editorconfig,.travis"
+myIncludes = ".tm_properties,.htaccess,.gitignore,.gitattributes,.standalone_migrations,.env,.travis.yml,.editorconfig,.swiftlint.yml,.rubocop*"
 fileBrowserGlob  = "{*,$myIncludes}"
 include = "{$include,$myIncludes}"
 
 # Hide log and tmp directories from search popups.
 #
-myExcludes = "log,tmp,public/media,node_modules,bower_components,vendor,_builds,_projects,_steps"
+myExcludes = "log,tmp,public/media,node_modules,bower_components,_builds,_projects,_steps,vendor,*.sql,*.pg,dump"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}"
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
 
 # Default editing configuration
 #
+#fontName         = SourceCodePro-Regular
+fontName         = SFMono-Light
+fontSize         = 13
+showIndentGuides = true
+theme            = CAB58494-D1A3-4BAD-BBC6-DAED679AD20B
 softWrap         = false
 showInvisibles   = true
+tabSize          = 2
+softTabs         = true
 
 # File type specific configuration
 #
 [ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib,gem,mp4,mov} ]
 binary           = true
-
-[ source.php ]
-softTabs         = false
-tabSize          = 4
 
 [ source.python ]
 softTabs         = false
@@ -35,7 +39,7 @@ tabSize          = 4
 tabSize          = 2
 
 [ attr.untitled ]
-fileType         = "source.php"
+fileType         = source.php
 
 [ text.plain ]
 softWrap         = true
@@ -43,9 +47,20 @@ softWrap         = true
 [ "{README,INSTALL,LICENSE,TODO}" ]
 fileType         = "text.plain"
 
+
 # "Go to Related File" action for Rspec test files
 [ *.rb ]
 relatedFilePath = "${TM_FILEPATH/\/app\/(.+)/\/spec\/${1/(?=\.rb$)/_spec/}/}"
 
 [ *_spec.rb ]
+fileType        = source.ruby.rspec
 relatedFilePath = "${TM_FILEPATH/\/spec\/(.+)/\/app\/${1/_spec(?=\.rb$)//}/}"
+
+[ *.html.erb ]
+relatedFilePath = "${TM_FILEPATH/\/app\/(.+)/\/spec\/${1}_spec.rb/}"
+
+[ *.erb_spec.rb]
+relatedFilePath = "${TM_FILEPATH/\/spec\/(.+)_spec.rb/\/app\/${1}/}"
+
+[ spec/**/shared/*.rb ]
+fileType        = source.ruby.rspec

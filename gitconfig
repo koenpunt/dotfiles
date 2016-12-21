@@ -1,14 +1,16 @@
 [user]
 	name = Koen Punt
 	email = koen@koenpunt.nl
+	signingkey = D590C707
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 [core]
 	excludesfile = ~/.gitignore_global
-	autocrlf = false
+	autocrlf = input
 	editor = /usr/local/bin/vim
+	attributesfile = ~/.gitattributes_global
 [alias]
 	ci = commit
     b = branch
@@ -22,6 +24,9 @@
 	lg2 = log --format='%Cgreen%h%Creset %C(cyan)%an%Creset - %s' --graph
 	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
 	branch-cleanup = !git fetch origin --prune && git branch --merged master | grep -v 'master$' | xargs git branch -d
+	whatadded = log --diff-filter=A
+	undo = reset HEAD^
+	ignored = ls-files --other --ignored --exclude-standard
 [push]
 	default = current
 [rerere]
@@ -30,6 +35,35 @@
 	rebase = true
 	default = current
 [help]
-	autocorrect = 15
+	autocorrect = 5
 [ghi]
 	token = !security find-internet-password -a koenpunt -s github.com -l 'ghi token' -w
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[diff "exif"]
+	textconv = exiftool
+[merge "arschema"]
+	name = newer ActiveRecord schema version
+	driver = "ruby -e '\n\
+		system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
+		b = File.read(%(%A))\n\
+		b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
+		  %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
+		end\n\
+		File.open(%(%A), %(w)) {|f| f.write(b)}\n\
+		exit 1 if b.include?(%(<)*%L)'"
+[rebase]
+	autosquash = true
+	autoStash = true
+[url "https://github.com"]
+	insteadOf = git://github.com

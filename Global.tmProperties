@@ -1,17 +1,27 @@
 # Version 1.0 -- Generated content!
 fontName         = SourceCodePro-Regular
 fontSize         = 13
+showIndentGuides = true
 showInvisibles   = true
 showWrapColumn   = true
 softTabs         = true
 softWrap         = false
-spellChecking    = false
+spellChecking    = true
 spellingLanguage = en
 tabSize          = 2
 theme            = CAB58494-D1A3-4BAD-BBC6-DAED679AD20B
-wrapColumn       = 120
+wrapColumn       = 0
 
 [ *.0 ]
+fileType         = text.plain
+
+[ *.1 ]
+fileType         = text.plain
+
+[ *.3 ]
+fileType         = text.plain
+
+[ *.7 ]
 fileType         = text.plain
 
 [ *.NFO ]
@@ -20,8 +30,11 @@ fileType         = text.plain
 [ *.am ]
 fileType         = text.plain
 
+[ *.an ]
+fileType         = text.plain
+
 [ *.blade.php ]
-fileType         = text.html.laravel-blade
+fileType         = text.html.php.laravel-blade
 
 [ *.cap ]
 fileType         = source.ruby
@@ -31,6 +44,12 @@ fileType         = text.plain
 
 [ *.cfg ]
 fileType         = source.python
+
+[ *.cjsx ]
+fileType         = source.coffee.react
+
+[ *.coffee.erb ]
+fileType         = source.coffee
 
 [ *.coffee.js ]
 fileType         = source.coffee
@@ -44,13 +63,19 @@ fileType         = source.nginx
 [ *.conf.default ]
 fileType         = text.plain
 
-[ *.conf.erb ]
+[ *_conf*.erb ]
 fileType         = source.nginx
 
 [ *.conf.j2 ]
 fileType         = source.jinja
 
+[ *.cron ]
+fileType         = text.plain
+
 [ *.crt ]
+fileType         = text.plain
+
+[ *.cson ]
 fileType         = text.plain
 
 [ *.csr ]
@@ -61,6 +86,9 @@ fileType         = source.css
 
 [ *.css.map ]
 fileType         = text.plain
+
+[ *.css.scss ]
+fileType         = source.scss
 
 [ *.dsp ]
 fileType         = text.plain
@@ -78,7 +106,7 @@ fileType         = text.plain
 fileType         = source.ini
 
 [ *.erb ]
-fileType         = text.html.erb.rails
+fileType         = source.ruby
 
 [ *.exp ]
 fileType         = text.plain
@@ -92,6 +120,12 @@ fileType         = text.plain
 [ *.gemfile ]
 fileType         = text.plain
 
+[ *.gitignore ]
+fileType         = text.plain
+
+[ *.hosts ]
+fileType         = text.plain
+
 [ *.html ]
 fileType         = text.html.mustache
 
@@ -101,14 +135,23 @@ fileType         = text.html.erb.rails
 [ *.in ]
 fileType         = text.plain
 
+[ *.inc.php ]
+fileType         = text.html.php
+
 [ *.js ]
-fileType         = source.js
+fileType         = source.js.babel
 
 [ *.js.erb ]
 fileType         = source.js.erb.rails
 
+[ *.js.flow ]
+fileType         = text.plain
+
 [ *.json.jbuilder ]
 fileType         = source.ruby
+
+[ *.jsx ]
+fileType         = source.js.react
 
 [ *.kml ]
 fileType         = text.xml
@@ -134,6 +177,15 @@ fileType         = text.mail.markdown
 [ *.map ]
 fileType         = text.plain
 
+[ *.markerb ]
+fileType         = text.plain
+
+[ *.md ]
+fileType         = text.html.markdown
+
+[ *.md.dist ]
+fileType         = text.html.markdown
+
 [ *.mk ]
 fileType         = source.makefile
 
@@ -141,6 +193,9 @@ fileType         = source.makefile
 fileType         = text.plain
 
 [ *.nfo ]
+fileType         = text.plain
+
+[ *.opts ]
 fileType         = text.plain
 
 [ *.osx ]
@@ -155,23 +210,41 @@ fileType         = text.plain
 [ *.pac ]
 fileType         = text.plain
 
+[ *.packaging ]
+fileType         = text.plain
+
+[ *.pbxproj ]
+fileType         = text.plain
+
 [ *.pem ]
 fileType         = text.plain
 
 [ *.php ]
+fileType         = source.php
+
+[ *.php.inc ]
 fileType         = text.html.php
 
 [ *.php.sample ]
-fileType         = text.html.php
+fileType         = source.php
+
+[ *.pid ]
+fileType         = text.plain
+
+[ *.podspec ]
+fileType         = source.ruby
 
 [ *.rb ]
-fileType         = source.ruby.rails
+fileType         = source.ruby
 
 [ *.rc ]
 fileType         = source.c
 
 [ *.rdoc ]
 fileType         = text.plain
+
+[ *.react.js ]
+fileType         = source.js.react
 
 [ *.sample ]
 fileType         = text.plain
@@ -188,6 +261,9 @@ fileType         = text.xml
 [ *.svg ]
 fileType         = text.xml
 
+[ *.text.erb ]
+fileType         = text.html.erb
+
 [ *.tpl ]
 fileType         = text.html.smarty
 
@@ -195,7 +271,10 @@ fileType         = text.html.smarty
 fileType         = text.html.smarty
 
 [ *.tt ]
-fileType         = text.html.erb
+fileType         = text.html.erb.rails
+
+[ *.ttx ]
+fileType         = text.xml
 
 [ *.txt ]
 fileType         = text.restructuredtext
@@ -206,10 +285,22 @@ fileType         = text.plain
 [ *.w32 ]
 fileType         = source.js
 
+[ *.x ]
+fileType         = text.plain
+
 [ *.xcscheme ]
 fileType         = text.plain
 
+[ *.xcworkspacedata ]
+fileType         = text.xml
+
 [ *.xib ]
+fileType         = text.xml
+
+[ *.xliff ]
+fileType         = text.xml
+
+[ *.xml.dist ]
 fileType         = text.xml
 
 [ *.yml ]
@@ -221,6 +312,9 @@ fileType         = source.yaml
 [ *.yml.tt ]
 fileType         = source.yaml
 
+[ .babelrc ]
+fileType         = source.json
+
 [ .bowerrc ]
 fileType         = source.json
 
@@ -228,15 +322,27 @@ fileType         = source.json
 fileType         = text.plain
 
 [ .editorconfig ]
-fileType         = text.plain
+fileType         = source.tm-properties
 
 [ .env ]
+fileType         = source.ini
+
+[ .env.example ]
 fileType         = source.ini
 
 [ .foreman ]
 fileType         = text.plain
 
+[ .gitattributes ]
+fileType         = text.plain
+
+[ .gitattributes_global ]
+fileType         = text.plain
+
 [ .gitignore ]
+fileType         = text.plain
+
+[ .keep ]
 fileType         = text.plain
 
 [ .nvmrc ]
@@ -244,6 +350,9 @@ fileType         = text.plain
 
 [ .powenv ]
 fileType         = source.shell
+
+[ .proxy.pac ]
+fileType         = source.js
 
 [ .rspec ]
 fileType         = text.plain
@@ -254,11 +363,23 @@ fileType         = source.yaml
 [ .zshrc ]
 fileType         = text.plain
 
+[ Appfile ]
+fileType         = source.ruby
+
 [ Capfile ]
 fileType         = source.ruby
 
+[ Deliverfile ]
+fileType         = source.ruby
+
+[ Fastfile ]
+fileType         = source.ruby
+
+[ Matchfile ]
+fileType         = source.ruby
+
 [ Podfile ]
-fileType         = source.podfile
+fileType         = source.ruby
 
 [ Procfile ]
 fileType         = source.yaml
@@ -266,17 +387,35 @@ fileType         = source.yaml
 [ Procfile.* ]
 fileType         = source.yaml
 
+[ Snapfile ]
+fileType         = source.ruby
+
 [ default ]
 fileType         = source.nginx
+
+[ pheanstalk ]
+fileType         = source.php
+
+[ routes ]
+fileType         = source.php
 
 [ source ]
 showInvisibles   = true
 softTabs         = true
-softWrap         = false
+softWrap         = true
+tabSize          = 2
+
+[ source.c ]
+softTabs         = true
 tabSize          = 2
 
 [ source.coffee ]
 softTabs         = true
+tabSize          = 2
+
+[ source.css ]
+softTabs         = true
+tabSize          = 2
 
 [ source.go ]
 softTabs         = false
@@ -285,17 +424,35 @@ tabSize          = 3
 [ source.js ]
 showInvisibles   = true
 softTabs         = true
+softWrap         = true
+tabSize          = 2
+
+[ source.js.react ]
+showInvisibles   = true
+
+[ source.json ]
+softTabs         = true
+tabSize          = 4
+
+[ source.m4 ]
+softTabs         = true
+softWrap         = true
 tabSize          = 2
 
 [ source.nginx ]
 tabSize          = 2
 
+[ source.objc ]
+softTabs         = false
+tabSize          = 4
+
 [ source.php ]
-softTabs         = true
+softTabs         = false
 softWrap         = true
-tabSize          = 2
+tabSize          = 4
 
 [ source.ruby ]
+showInvisibles   = true
 softWrap         = false
 
 [ source.scss ]
@@ -303,21 +460,29 @@ showInvisibles   = true
 softTabs         = true
 tabSize          = 2
 
+[ source.shell ]
+softTabs         = false
+tabSize          = 2
+
 [ source.swift ]
 tabSize          = 4
+
+[ source.yaml ]
+softTabs         = true
+tabSize          = 2
 
 [ text ]
 showInvisibles   = true
 softTabs         = true
 softWrap         = false
-spellChecking    = false
+spellChecking    = true
 tabSize          = 2
 
 [ text.html ]
 showInvisibles   = true
 softTabs         = true
-softWrap         = false
-spellChecking    = false
+softWrap         = true
+spellChecking    = true
 tabSize          = 2
 
 [ text.html.basic ]
@@ -326,9 +491,15 @@ tabSize          = 2
 
 [ text.html.erb ]
 softTabs         = true
+softWrap         = true
 tabSize          = 2
 
 [ text.html.erb.rails ]
+softTabs         = true
+softWrap         = true
+tabSize          = 2
+
+[ text.html.laravel-blade ]
 softTabs         = true
 tabSize          = 2
 
@@ -337,22 +508,21 @@ softTabs         = true
 tabSize          = 2
 
 [ text.html.php ]
-showInvisibles   = true
-softTabs         = false
-softWrap         = false
+softTabs         = true
 tabSize          = 2
 
 [ text.html.smarty ]
 showInvisibles   = true
 softTabs         = true
-softWrap         = false
-spellChecking    = false
+softWrap         = true
+spellChecking    = true
 tabSize          = 2
 
 [ text.html.textile ]
 tabSize          = 2
 
 [ text.plain ]
+softWrap         = false
 tabSize          = 4
 
 [ text.restructuredtext ]
@@ -363,6 +533,15 @@ softWrap         = false
 
 [ text.tabular.csv ]
 softWrap         = false
+
+[ text.xml ]
+softTabs         = true
+
+[ user-data ]
+fileType         = source.yaml
+
+[ user_data ]
+fileType         = source.yaml
 
 [ zshrc ]
 fileType         = source.shell

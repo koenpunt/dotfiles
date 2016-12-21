@@ -81,6 +81,9 @@ autocmd FileType html colorscheme candycode
 set hlsearch
 noremap <F4> :nohlsearch<CR>
 
+" Restore cursor position
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 " Completion
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
