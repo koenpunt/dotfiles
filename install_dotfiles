@@ -16,36 +16,20 @@ dotfiles=(
   railsrc
 )
 
-if [ "$DIR" != "$HOME/.dotfiles" ]
-then
-	echo "Must be run from ~/.dotfiles/\
-
-Exiting..."
-
-#	echo "First run \
-#\`git clone git@github.com:koenpunt/dotfiles.git ~/.dotfiles\`\
-#
-#Exiting..."
-	exit 1
-fi
-
-for dotfile in ${dotfiles[@]} 
+for dotfile in ${dotfiles[@]}
 do
-	linkname=${HOME}/.${dotfile}
-	if [ -e "$linkname" ]
-	then
-		if [ -L "$linkname" ]
-		then
-			echo "$linkname is a link, updating..."
-		else
-			echo "$linkname exists, backing up..."
-			mv $linkname $linkname.bak
-			echo "Creating $linkname"
-		fi
-	else
-		echo "Creating $linkname"
-	fi
-	# ln --symbolic --force --no-dereference ${DIR}/${dotfile} $linkname
-	ln -sfn ${DIR}/${dotfile} $linkname
+  linkname=${HOME}/.${dotfile}
+  if [ -e "$linkname" ]; then
+    if [ -L "$linkname" ]; then
+      echo "$linkname is a link, updating..."
+    else
+      echo "$linkname exists, backing up..."
+      mv $linkname $linkname.bak
+      echo "Creating $linkname"
+    fi
+  else
+    echo "Creating $linkname"
+  fi
+  ln -sfn ${DIR}/${dotfile} $linkname
 done
 
