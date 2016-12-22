@@ -16,11 +16,10 @@ excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
 
 # Default editing configuration
 #
-#fontName         = SourceCodePro-Regular
-fontName         = SFMono-Light
+fontName         = SFMono-Medium
 fontSize         = 13
-showIndentGuides = true
 theme            = CAB58494-D1A3-4BAD-BBC6-DAED679AD20B
+showIndentGuides = true
 softWrap         = false
 showInvisibles   = true
 tabSize          = 2
