@@ -4,7 +4,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(brew composer gem bundler rbenv rsync ruby textmate hk aws web-search)
+plugins=(brew composer gem bundler rbenv rsync ruby textmate aws)
 
 # Need to add aws to path before sourcing oh-my-zsh
 export PATH="$PATH:/usr/local/aws/bin"
@@ -25,10 +25,6 @@ alias ssh='env SSH_PWD="$PWD" command ssh'
 alias vgit='vim .git/config'
 
 alias apps='cd /private/shares/apps/$1'
-
-alias r='rails'
-
-alias rapp='rails new --skip-gemfile --skip-test-unit --database=mysql -m https://raw.githubusercontent.com/fetch/rails-templates/master/default.rb'
 
 alias opendev='open http://$(basename $PWD).dev'
 
@@ -60,7 +56,6 @@ productionlog(){
 
 # HUB
 export GITHUB_USER="koenpunt"
-export HUB_PROTOCOL="https"
 eval "$(hub alias -s)"
 
 # Go

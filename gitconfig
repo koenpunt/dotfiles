@@ -67,3 +67,5 @@
 	autoStash = true
 [url "https://github.com"]
 	insteadOf = git://github.com
+[hub]
+	protocol = https
