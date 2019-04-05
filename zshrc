@@ -4,7 +4,17 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(brew composer gem bundler rbenv rsync ruby textmate aws)
+plugins=(
+  bundler
+  docker
+  docker-compose
+  rsync
+  rbenv
+  nodenv
+  aws
+  kubectl
+  kube-ps1
+)
 
 # Need to add aws to path before sourcing oh-my-zsh
 export PATH="$PATH:/usr/local/aws/bin"
@@ -14,65 +24,30 @@ source $ZSH/oh-my-zsh.sh
 # Load keys into keychain, ignoring errors
 ssh-add -K 2>/dev/null
 
-# DNS Flush
-alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
-
-# SSH Auto CD
-alias ssh='env SSH_PWD="$PWD" command ssh'
-
-# Shortcut to editing local git config
-alias vgit='vim .git/config'
-
-alias apps='cd /private/shares/apps/$1'
-
-alias opendev='open http://$(basename $PWD).dev'
-
-setopt complete_aliases
-
 # Enable bash autocomplete
 autoload bashcompinit
 bashcompinit
 
+export LANG=en_US.UTF-8
+
 # RBENV
 export RBENV_ROOT="${HOME}/.rbenv"
-
 if [ -d "${RBENV_ROOT}" ]; then
   export PATH="${RBENV_ROOT}/bin:${PATH}"
   eval "$(rbenv init -)"
 fi
-
-productionlog(){
-  app=$1
-  server=$2
-  if [ -z "$server" ]; then
-	server=vito
-	shift
-  else
-	shift 2
-  fi
-  ssh $server.fetchdns.nl tail /var/apps/$app/current/log/production.log $@
-}
 
 # HUB
 export GITHUB_USER="koenpunt"
 eval "$(hub alias -s)"
 
 # Go
-export GOPATH=$HOME/Go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOPATH=$HOME/Development/go
+export PATH=$GOPATH/bin:$PATH
 
 # Heroku Toolbelt
 export HEROKU_GIT_HOST_REGEX="heroku\.com(\..*)?"
 export PATH=/usr/local/heroku/bin:$PATH
-
-# AWS credentials
-#export EC2_HOME=$HOME/.aws
-#export EC2_PRIVATE_KEY=$(echo $HOME/.aws/pk-*.pem)
-#export EC2_CERT=$(echo $HOME/.aws/cert-*.pem)
-export AWS_CREDENTIAL_FILE=$HOME/.aws/aws-credential-file.txt
-export AWS_DEFAULT_REGION=eu-central-1
 
 # nodenv
 export PATH="$HOME/.nodenv/bin:$PATH"
@@ -84,21 +59,26 @@ eval "`npm completion`"
 # direnv
 eval "$(direnv hook $SHELL)"
 
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-# Composer
-export PATH=$HOME/.composer/vendor/bin:$PATH
-
-# Docker
-[ -f $HOME/.dockerrc ] && source $HOME/.dockerrc
-
+# DigitalOcean
+source <(doctl completion zsh)
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
-# added by travis gem
-[ -f /Users/koenpunt/.travis/travis.sh ] && source /Users/koenpunt/.travis/travis.sh
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/emulator
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
-export EDITOR=/Applications/TextMate.app/Contents/Resources/mate
+# Rust package manager
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Sketch
+export PATH=/Applications/Sketch.app/Contents/Resources/sketchtool/bin/:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi

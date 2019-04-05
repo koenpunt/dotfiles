@@ -1,6 +1,6 @@
 # Settings
 #
-windowTitle           = "$TM_DISPLAYNAME - ${TM_DIRECTORY/${HOME}\//~\//} (git: $TM_SCM_BRANCH)"
+windowTitle           = "$TM_DISPLAYNAME - ${TM_DIRECTORY/${HOME}\/Development\//\/\//} (git: $TM_SCM_BRANCH)"
 
 # Extra files to include
 #
@@ -46,6 +46,8 @@ softWrap         = true
 [ "{README,INSTALL,LICENSE,TODO}" ]
 fileType         = "text.plain"
 
+[ text.html.markdown ]
+softWrap         = true
 
 # "Go to Related File" action for Rspec test files
 [ *.rb ]
