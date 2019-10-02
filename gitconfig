@@ -1,7 +1,7 @@
 [user]
 	name = Koen Punt
 	email = koen@koenpunt.nl
-	signingkey = D590C707
+	signingkey = 3BD9164122E5B50F
 [color]
 	diff = auto
 	status = auto
@@ -13,11 +13,13 @@
 	attributesfile = ~/.gitattributes_global
 [alias]
 	ci = commit
-    b = branch
-    s = status
+	b = branch
+	br = branch
+	bc = branch-cleanup
+	r = remote
+	s = status
 	f = fetch
 	co = checkout
-	ci = commit
 	cp = cherry-pick
 	com = checkout master
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -27,6 +29,10 @@
 	whatadded = log --diff-filter=A
 	undo = reset HEAD^
 	ignored = ls-files --other --ignored --exclude-standard
+	quote-string = "!read -r l; printf \\\"!; printf %s \"$l\" | sed 's/\\([\\\"]\\)/\\\\\\1/g'; printf \" #\\\"\\n\" #"
+	debug  = "!set -x; GIT_TRACE=2 GIT_CURL_VERBOSE=2 GIT_TRACE_PERFORMANCE=2 GIT_TRACE_PACK_ACCESS=2 GIT_TRACE_PACKET=2 GIT_TRACE_PACKFILE=2 GIT_TRACE_SETUP=2 GIT_TRACE_SHALLOW=2 git"
+	list-autostash = "!git log --pretty='%cr: %h %s' $(git fsck --no-reflog | grep '^dangling commit' | cut -f3 -d\" \" ) | grep ': autostash$'"
+	tod = "!git log --author=\"$(git config user.name)\" --date=iso | perl -nalE 'if (/^Date:\\s+[\\d-]{10}\\s(\\d{2})/) { say $1+0 }' | sort | uniq -c|perl -MList::Util=max -nalE '$h{$F[1]} = $F[0]; }{ $m = max values %h; foreach (0..23) { $h{$_} = 0 if not exists $h{$_} } foreach (sort {$a <=> $b } keys %h) { say sprintf \"%02d - %4d %s\", $_, $h{$_}, \"*\"x ($h{$_} / $m * 50); }'"
 [push]
 	default = current
 [rerere]
@@ -47,11 +53,30 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [diff "exif"]
 	textconv = exiftool
+[diff "compressedjson"]
+	textconv = jq .
+[diff "sketchtool"]
+	textconv = "sketchtool dump"
+	cachetextconv = true
+	binary = true
+[rebase]
+	autosquash = true
+	autoStash = true
+[url "https://github.com"]
+	insteadOf = git://github.com
+[hub]
+	protocol = https
+[commit]
+	gpgsign = true
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
 [merge "arschema"]
 	name = newer ActiveRecord schema version
 	driver = "ruby -e '\n\
@@ -62,10 +87,3 @@
 		end\n\
 		File.open(%(%A), %(w)) {|f| f.write(b)}\n\
 		exit 1 if b.include?(%(<)*%L)'"
-[rebase]
-	autosquash = true
-	autoStash = true
-[url "https://github.com"]
-	insteadOf = git://github.com
-[hub]
-	protocol = https
