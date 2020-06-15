@@ -15,19 +15,22 @@ plugins=(
   kube-ps1
 )
 
-# Need to add aws to path before sourcing oh-my-zsh
-export PATH="$PATH:/usr/local/aws/bin"
-
 source $ZSH/oh-my-zsh.sh
 
 # Load keys into keychain, ignoring errors
 ssh-add -K 2>/dev/null
+
+# Enable zsh autocomplete
+autoload -U compinit
+compinit
 
 # Enable bash autocomplete
 autoload bashcompinit
 bashcompinit
 
 export LANG=en_US.UTF-8
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 
 # RBENV
 export RBENV_ROOT="${HOME}/.rbenv"
@@ -40,10 +43,6 @@ fi
 export GITHUB_USER="koenpunt"
 eval "$(hub alias -s)"
 
-# Go
-export GOPATH=$HOME/Development/go
-export PATH=$GOPATH/bin:$PATH
-
 # Heroku Toolbelt
 export HEROKU_GIT_HOST_REGEX="heroku\.com(\..*)?"
 export PATH=/usr/local/heroku/bin:$PATH
@@ -53,7 +52,7 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
 # Node NPM
-eval "`npm completion`"
+eval "`command npm completion`"
 
 # direnv
 eval "$(direnv hook $SHELL)"
@@ -84,13 +83,10 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
-# PHP
-export PATH="/usr/local/opt/php@7.3/bin:$PATH"
-export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
-
 # AWS
-source /usr/local/aws/bin/aws_zsh_completer.sh
+if [ -f "/usr/local/bin/aws_completer" ]; then
+  complete -C '/usr/local/bin/aws_completer' aws
+fi
 
 zmodload -u zsh/stat
-if [ -e /Users/koenpunt/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/koenpunt/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer
