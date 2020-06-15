@@ -58,7 +58,9 @@ eval "`command npm completion`"
 eval "$(direnv hook $SHELL)"
 
 # DigitalOcean
-source <(doctl completion zsh)
+if type doctl > /dev/null; then
+  source <(doctl completion zsh)
+fi
 
 #eval "$(velero completion zsh)"
 
