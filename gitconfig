@@ -25,7 +25,8 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --format='%Cgreen%h%Creset %C(cyan)%an%Creset - %s' --graph
 	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
-	branch-cleanup = !git fetch origin --prune && git branch --merged master | grep -v 'master$' | xargs git branch -d
+	#branch-cleanup = !
+	branch-cleanup = "!f() { BRANCH="${1:-master}"; git fetch origin --prune && git branch --merged "$BRANCH" | grep -v "$BRANCH" | grep -v master | xargs git branch -d; }; f"
 	whatadded = log --diff-filter=A
 	undo = reset HEAD^
 	ignored = ls-files --other --ignored --exclude-standard

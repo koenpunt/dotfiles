@@ -31,6 +31,8 @@ bashcompinit
 export LANG=en_US.UTF-8
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+# Python
+export PATH="${PATH}:${HOME}/Library/Python/3.8/bin"
 
 # RBENV
 export RBENV_ROOT="${HOME}/.rbenv"
