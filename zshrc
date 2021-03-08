@@ -20,8 +20,12 @@ source $ZSH/oh-my-zsh.sh
 # Load keys into keychain, ignoring errors
 ssh-add -K 2>/dev/null
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # Enable zsh autocomplete
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 # Enable bash autocomplete
