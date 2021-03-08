@@ -9,7 +9,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
-	editor = /usr/local/bin/vim
+	editor = /opt/homebrew/bin/vim
 	attributesfile = ~/.gitattributes_global
 [alias]
 	ci = commit
