@@ -9,7 +9,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
-	editor = /opt/homebrew/bin/vim
+	editor = vim
 	attributesfile = ~/.gitattributes_global
 [alias]
 	ci = commit
@@ -89,3 +89,5 @@
 		exit 1 if b.include?(%(<)*%L)'"
 [gpg]
 	program = gpg
+[init]
+	defaultBranch = main

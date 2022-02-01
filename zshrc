@@ -15,6 +15,8 @@ plugins=(
   kube-ps1
 )
 
+zmodload -a zsh/stat zstat
+
 source $ZSH/oh-my-zsh.sh
 
 # Load keys into keychain, ignoring errors
@@ -34,7 +36,6 @@ bashcompinit
 
 export LANG=en_US.UTF-8
 export HOMEBREW_NO_AUTO_UPDATE=1
-
 
 # RBENV
 export RBENV_ROOT="${HOME}/.rbenv"
@@ -66,11 +67,14 @@ if type doctl > /dev/null; then
   source <(doctl completion zsh)
 fi
 
+# Go
+export PATH=$HOME/go/bin:$PATH
+
 #eval "$(velero completion zsh)"
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home -v 15.0.2)
 
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/emulator
@@ -94,5 +98,4 @@ if [ -f "/usr/local/bin/aws_completer" ]; then
   complete -C '/usr/local/bin/aws_completer' aws
 fi
 
-zmodload -u zsh/stat
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer
