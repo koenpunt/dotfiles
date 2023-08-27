@@ -13,7 +13,7 @@
 	attributesfile = ~/.gitattributes_global
 [alias]
 	ci = commit
-	b = branch
+	b = branch --sort=-committerdate
 	br = branch
 	bc = branch-cleanup
 	r = remote
@@ -21,11 +21,12 @@
 	f = fetch
 	co = checkout
 	cp = cherry-pick
-	com = checkout master
+	main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+	com = "!f(){ git checkout $(git main-branch) $@;}; f"
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --format='%Cgreen%h%Creset %C(cyan)%an%Creset - %s' --graph
 	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
-	branch-cleanup = !git fetch origin --prune && git branch --merged master | grep -v 'master$' | xargs git branch -d
+	branch-cleanup = !git fetch origin --prune && git branch --merged main | grep -v 'main$' | xargs git branch -d
 	whatadded = log --diff-filter=A
 	undo = reset HEAD^
 	ignored = ls-files --other --ignored --exclude-standard
@@ -42,8 +43,6 @@
 	default = current
 [help]
 	autocorrect = 5
-[ghi]
-	token = !security find-internet-password -a koenpunt -s github.com -l 'ghi token' -w
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -74,9 +73,6 @@
 	protocol = https
 [commit]
 	gpgsign = true
-[merge "npm-merge-driver"]
-	name = automatically merge npm lockfiles
-	driver = npx npm-merge-driver merge %A %O %B %P
 [merge "arschema"]
 	name = newer ActiveRecord schema version
 	driver = "ruby -e '\n\
@@ -89,3 +85,7 @@
 		exit 1 if b.include?(%(<)*%L)'"
 [gpg]
 	program = gpg
+[init]
+	defaultBranch = main
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
