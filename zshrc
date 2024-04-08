@@ -70,7 +70,7 @@ fi
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home -v 20)
 
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/emulator
@@ -82,6 +82,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Sketch
 export PATH=/Applications/Sketch.app/Contents/Resources/sketchtool/bin/:$PATH
+
+# IntelliJ
+export PATH=/Applications/IntelliJ\ IDEA.app/Contents/MacOS:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
