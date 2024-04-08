@@ -98,4 +98,3 @@ if [ -f "/usr/local/bin/aws_completer" ]; then
 fi
 
 zmodload -u zsh/stat
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer
